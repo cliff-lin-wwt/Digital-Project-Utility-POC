@@ -1,21 +1,44 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cliff Lin - Demo</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <title>Digital Repository Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
+  <div id="app">
+    <h1>Digital Repository Demo</h1>
 
-    <div id="app">
-      <!-- vue controls this part of the app -->
-      <h1 v-if = "Button">hello world</h1> 
-      <button @click="toggleButton">
-        <span v-if ="Button">on</span>
-        <span v-if ="!Button">off</span>
-       </button>
+    <div>
+      <h2>Add a New Project</h2>
+      <form @submit.prevent="addProject">
+        <label for="name">Name:</label>
+        <input type="text" v-model="newProject.name" required><br>
+        <label for="members">Members:</label>
+        <input type="text" v-model="newProject.members" required><br>
+        <label for="client">Client:</label>
+        <input type="text" v-model="newProject.client" required><br>
+        <label for="technology">Technology:</label>
+        <input type="text" v-model="newProject.technology" required><br>
+        <label for="description">Description:</label>
+        <textarea v-model="newProject.description" required></textarea><br>
+        <button type="submit">Add Project</button>
+      </form>
     </div>
 
-   <script src="app.js"></script>
+    <div>
+      <h2>Project List</h2>
+      <ul>
+        <li v-for="project in projects" :key="project.id">
+          <h3>{{ project.name }}</h3>
+          <p><strong>Members:</strong> {{ project.members }}</p>
+          <p><strong>Client:</strong> {{ project.client }}</p>
+          <p><strong>Technology:</strong> {{ project.technology }}</p>
+          <p><strong>Description:</strong> {{ project.description }}</p>
+          <button @click="deleteProject(project.id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>

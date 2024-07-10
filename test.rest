@@ -1,0 +1,18 @@
+###
+GET http://localhost:1300/setup
+
+###
+GET http://localhost:1300
+
+
+###
+POST http://localhost:1300
+Content-Type: application/json
+
+{
+    "name": "Project Utility test 2",
+    "members": "Cliff",
+    "client": "Digital",
+    "technology": "vue.js",
+    "description": "demo on vue"
+}

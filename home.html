@@ -4,13 +4,15 @@
   <title>Digital Repository Demo</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 </head>
 <body>
   <div id="app">
     <h1>Digital Repository Demo</h1>
 
     <div>
-      <h2>Add a New Project</h2>
+      <h2 class="title">Add a New Project</h2>
       <form @submit.prevent="addProject">
         <label for="name">Name:</label>
         <input type="text" v-model="newProject.name" required><br>

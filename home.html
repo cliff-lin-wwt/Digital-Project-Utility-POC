@@ -10,6 +10,8 @@
 <body>
   <div id="app">
     <h1>Digital Repository Demo</h1>
+    <search-bar @filter-projects="filterProjects"></search-bar>
+    <project-grid :projects="filteredProjects" @delete-project="deleteProject"></project-grid>
 
     <div>
       <h2 class="title">Add a New Project</h2>
@@ -26,20 +28,6 @@
         <textarea v-model="newProject.description" required></textarea><br>
         <button type="submit">Add Project</button>
       </form>
-    </div>
-
-    <div>
-      <h2>Project List</h2>
-      <ul>
-        <li v-for="project in projects" :key="project.id">
-          <h3>{{ project.name }}</h3>
-          <p><strong>Members:</strong> {{ project.members }}</p>
-          <p><strong>Client:</strong> {{ project.client }}</p>
-          <p><strong>Technology:</strong> {{ project.technology }}</p>
-          <p><strong>Description:</strong> {{ project.description }}</p>
-          <button @click="deleteProject(project.id)">Delete</button>
-        </li>
-      </ul>
     </div>
   </div>
 </body>

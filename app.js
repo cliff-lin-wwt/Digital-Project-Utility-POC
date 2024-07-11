@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     data: {
       projects: [],
       searchTerm: '',
+      searchCriteria: 'name', 
       newProject: {
         name: '',
         members: '',
@@ -20,10 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!this.searchTerm) {
           return this.projects;
         }
-        // Filter projects based on the search term
-        return this.projects.filter(project =>
-          project.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-        );
+
+        return this.projects.filter(project => {
+          const criteriaValue = project[this.searchCriteria].toLowerCase();
+          return criteriaValue.includes(this.searchTerm.toLowerCase());
+        });
       }
     },
     methods: {

@@ -12,7 +12,17 @@
     <h1>Digital Repository Demo</h1>
     <button onclick="window.location.href='add.html'">Add Project</button>
 
-    <input type="text" placeholder="Search" v-model="searchTerm"></input>
+    <div>
+      <label for="searchCriteria">Search by:</label>
+      <select v-model="searchCriteria">
+        <option value="name">Name</option>
+        <option value="members">Members</option>
+        <option value="client">Client</option>
+        <option value="technology">Technology</option>
+      </select>
+      <input type="text" placeholder="Search" v-model="searchTerm"></input>
+    </div>
+
     <div>
       <h2>Project List</h2>
       <ul>

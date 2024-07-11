@@ -10,28 +10,13 @@
 <body>
   <div id="app">
     <h1>Digital Repository Demo</h1>
+    <button onclick="window.location.href='add.html'">Add Project</button>
 
-    <div>
-      <h2 class="title">Add a New Project</h2>
-      <form @submit.prevent="addProject">
-        <label for="name">Name:</label>
-        <input type="text" v-model="newProject.name" required><br>
-        <label for="members">Members:</label>
-        <input type="text" v-model="newProject.members" required><br>
-        <label for="client">Client:</label>
-        <input type="text" v-model="newProject.client" required><br>
-        <label for="technology">Technology:</label>
-        <input type="text" v-model="newProject.technology" required><br>
-        <label for="description">Description:</label>
-        <textarea v-model="newProject.description" required></textarea><br>
-        <button type="submit">Add Project</button>
-      </form>
-    </div>
-
+    <input type="text" placeholder="Search" v-model="searchTerm"></input>
     <div>
       <h2>Project List</h2>
       <ul>
-        <li v-for="project in projects" :key="project.id">
+        <li v-for="project in filteredProjects" :key="project.id">
           <h3>{{ project.name }}</h3>
           <p><strong>Members:</strong> {{ project.members }}</p>
           <p><strong>Client:</strong> {{ project.client }}</p>

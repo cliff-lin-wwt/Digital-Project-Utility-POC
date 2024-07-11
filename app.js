@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     el: '#app',
     data: {
       projects: [],
+      searchTerm: '',
       newProject: {
         name: '',
         members: '',
@@ -13,6 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     created() {
       this.fetchProjects();
+    },
+    computed: {
+      filteredProjects() {
+        if (!this.searchTerm) {
+          return this.projects;
+        }
+        // Filter projects based on the search term
+        return this.projects.filter(project =>
+          project.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      }
     },
     methods: {
       fetchProjects() {
